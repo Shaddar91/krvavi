@@ -1,0 +1,24 @@
+body {
+    background-color: purple;
+}
+/* h1 {
+    color:green;
+    font-size: 50px;
+    list-style-type: circle;
+} */
+p {
+    color: red;
+}
+
+.center {
+    text-align: center;
+}
+
+#xez {
+    text-align: center;
+    color: rgb(172, 27, 27);
+}
+
+p.xe {
+    color: rgb(67, 24, 167);
+}
