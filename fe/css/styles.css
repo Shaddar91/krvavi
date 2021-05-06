@@ -1,6 +1,6 @@
-body {
+/* body {
     background-color: purple;
-}
+} */
 /* h1 {
     color:green;
     font-size: 50px;
@@ -21,4 +21,11 @@ p {
 
 p.xe {
     color: rgb(67, 24, 167);
+}
+
+html, body {
+	font-family: 'Play', sans-serif;
+	background: #424242;
+	margin: 0;
+	overflow: hidden;
 }
