@@ -1,20 +1,46 @@
-version: '3.1'
-
+version: '3.3'
+  
+networks:
+  krvava_mreza:
+    external: false
+    name: krvava_mreza
+  
 services:
-
   db:
-    image: shaddar/postgres12:v1
+    image: shaddar/postgresql12:v1
+    container_name: postgres
     restart: always
+    ports:
+      - 8999:5432
+    networks:
+      - krvava_mreza
     environment:
       POSTGRES_USER: shaddar
       POSTGRES_PASSWORD: shaddar91
       POSTGRES_DB: shad
 
 
-  be:
-    image: shaddar/flask:v1
+  nginx:
+    image: shaddar/nginx18:flask_v1
+    container_name: nginx-01
     restart: always
     ports:
-      - 8081:8080
-    volumes:
-      - be:/var/www/app
+      - 9001:80
+    networks:
+      - krvava_mreza
+    depends_on:
+      - be
+  
+  
+  be:
+    container_name: flask-01
+    build:
+      context: ./be
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 9002:5000
+    expose:
+      - 5000
+    networks:
+      - krvava_mreza
